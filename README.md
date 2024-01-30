@@ -26,11 +26,13 @@
     - Run the command: git clone <HTTPS_URL> : replacing <HTTPS_URL> with the copied HTTPS URL.
 
 ## Collaborators 
-  Benson, Rosemary
-  Djouama, Mohamed
-  Khail, Said
-  Sopov, George
-  Yildiz, Yusuf sercan
+This project was made possible by the following contributors:
+
+- Benson, Rosemary
+- Djouama, Mohamed
+- Khail, Said
+- Sopov, George
+- Yildiz, Yusuf sercan
 
 ## License
 
