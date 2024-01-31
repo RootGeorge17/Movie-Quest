@@ -18,12 +18,182 @@
   </head>
   <body>
 
-    <form id="form" role="search">
+    <!-- <form id="form" role="search">
       <input type="search" id="query" name="q"
        placeholder="Search..."
        aria-label="Search through site content">
       <button>Submit</button>
-    </form>
+    </form> -->
+
+    <header class="container-fluid text-md-center text-black p-2 weather-title">
+      <h1 clas="col-md-6">Movie Quest</h1>
+    </header>
+  
+      <!-- max-width for ultra wide resolutions for the Weather Dashboard -->
+      <div class="container-fluid" style="max-width: 1400px">
+        <div class="row">
+        <!-- Search bar section -->
+          <aside class="col-lg-3 pb-3 searchBar">
+            <h2 id="form-heading" class="mt-4 h3 form-label">Search Movie</h2>
+            <form id="search-form" class="form">
+              <div class=" input-group mb-6 search-section">
+                    <!-- submit button -->
+                <input
+                    class="form-control movie-search search-bar"
+                    type="text"
+                    id="search-input"
+                    placeholder="Enter Movie name"
+                    aria-labelledby="form-heading"
+                    aria-controls="today forecast"
+                    required 
+                    />
+                    <button type="submit" class="btn btn-warning search-btn" id="search-button" 
+                    aria-label="submit search">
+                    <i class="bi bi-search"></i>
+                    </button>
+                </div>
+              </form>
+              </aside>
+    
+                <!-- historical data -->
+              <!-- <section class="d-flex flex-row col-lg-6 pb-3  historicalData">
+                <h4 class="mt-3 historyName">Saved Cities</h4>
+                  <div class="historicalCards">
+  
+                  </div>
+              </section>
+  
+              <div id="alert-container" class="position-fixed top-0 end-0 p-3"></div> -->
+              
+              <!-- Showing current weather for today  -->
+                <h2 class="card-title cyrrentMovie"></h2>
+                <div class="container current-movie col-10">
+                  <div class="movieContainer">
+                  <div class="weather-data">
+                    <img class="movie-poster" alt="movie-poster">
+                  <h4 class="mb-1 iconTitle"> Movie title</h4>
+                  <h4 class="movie-cast">movie cast</h4>
+                  <h4 class="release-date">Release date</h4>
+                  <h4 class="movie-rating">Movie Rating</h4>
+                  
+                 </div>
+                </div>
+              </div>
+  
+          <!-- 5 day forcast section -->
+  
+          <h2 class="card-title currentWeatherToday"></h2>
+          <section class="col-lg-6 WeatherForecast mx-auto">
+            <div class="fiveDayContainer">
+            <div class="col-lg-2 col-md-4 mb-3">
+            <div class="card-body">
+            <div class="card-title cardLayout">  
+            <h4 class="card-title">
+                <p class="mb-0 weatherDate"></p>
+            </h4>
+            <h4 class="card-title">Weather  
+                <p class="mb-0 weatherIconImage"></p>
+            </h4> 
+            <h4 class="card-title">Temp
+                <p class="mb-0 cityFiveTemperature"></p>
+            </h4>
+              <h4 class="card-title">Wind
+                  <p class="mb-0 cityFiveWind"></p>
+              </h4>
+              <h4 class="card-title">Humidity
+                  <p class="mb-0 cityFiveHumid"></p>
+              </h4>
+              </div>
+              </div>
+              </div>
+                <div class="col-lg-2 col-md-4 mb-3">
+            <div class="card-body">
+            <div class="card-title cardLayout">  
+            <h4 class="card-title">
+                <p class="mb-0 weatherDate"></p>
+            </h4>
+            <h4 class="card-title">Weather
+                <p class="mb-0 weatherIconImage"></p>
+            </h4> 
+            <h4 class="card-title">Temp
+                <p class="mb-0 cityFiveTemperature"></p>
+            </h4>
+              <h4 class="card-title">Wind
+                  <p class="mb-0 cityFiveWind"></p>
+              </h4>
+              <h4 class="card-title">Humidity
+                  <p class="mb-0 cityFiveHumid"></p>
+              </h4>
+              </div>
+              </div>
+              </div>
+                <div class="col-lg-2 col-md- mb-3">
+            <div class="card-body">
+            <div class="card-title cardLayout">  
+            <h4 class="card-title">
+                <p class="mb-0 weatherDate"></p>
+            </h4>
+            <h4 class="card-title">Weather Icon 
+                <p class="mb-0 weatherIconImage"></p>
+            </h4> 
+            <h4 class="card-title">Temp
+                <p class="mb-0 cityFiveTemperature"></p>
+            </h4>
+              <h4 class="card-title">Wind
+                  <p class="mb-0 cityFiveWind"></p>
+              </h4>
+              <h4 class="card-title">Humidity
+                  <p class="mb-0 cityFiveHumid"></p>
+              </h4>
+              </div>
+              </div>
+              </div>
+                <div class="col-lg-2 col-md-4 mb-3">
+            <div class="card-body">
+            <div class="card-title cardLayout">  
+            <h4 class="card-title">
+                <p class="mb-0 weatherDate"></p>
+            </h4>
+            <h4 class="card-title">Weather Icon 
+                <p class="mb-0 weatherIconImage"></p>
+            </h4> 
+            <h4 class="card-title">Temp
+                <p class="mb-0 cityFiveTemperature"></p>
+            </h4>
+              <h4 class="card-title">Wind
+                  <p class="mb-0 cityFiveWind"></p>
+              </h4>
+              <h4 class="card-title">Humidity
+                  <p class="mb-0 cityFiveHumid"></p>
+              </h4>
+              </div>
+              </div>
+              </div>
+                <div class="col-lg-2 col-md-4 mb-3">
+            <div class="card-body">
+            <div class="card-title cardLayout">  
+            <h4 class="card-title">
+                <p class="mb-0 weatherDate"></p>
+            </h4>
+            <h4 class="card-title">Weather Icon 
+                <p class="mb-0 weatherIconImage"></p>
+            </h4> 
+            <h4 class="card-title">Temp
+                <p class="mb-0 cityFiveTemperature"></p>
+            </h4>
+              <h4 class="card-title">Wind
+                  <p class="mb-0 cityFiveWind"></p>
+              </h4>
+              <h4 class="card-title">Humidity
+                  <p class="mb-0 cityFiveHumid"></p>
+              </h4>
+              </div>
+              </div>
+              </div>
+              </div>
+              </section>
+  
+
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
