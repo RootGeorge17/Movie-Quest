@@ -45,9 +45,12 @@ function addMovieTrailer(data) {
  const video = data.items[0].id.videoId;
  console.log(`Video ID for the Video displayed : ${video}`);
 
- //displaying the video in the webpage by using iframes 
- const youtubeSrc = `www.youtube.com/embed/${video}`;
+ //displaying the video in the webpage by using iframes and will be muted once its play 
+ const youtubeSrc = `https://www.youtube.com/embed/${video}`;
  const iframeEl = `<iframe id="player" type="text/html" width="640" height="390" src="${youtubeSrc}" frameborder="0"></frame>`;
+
+
+
  console.log(`Iframe : ${iframeEl}`);
 
  //Append the youtube video to the webpage
