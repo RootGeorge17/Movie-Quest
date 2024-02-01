@@ -8,7 +8,6 @@ $(document).ready(function () {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         showMovieData(data);
       });
   }
@@ -22,10 +21,10 @@ $(document).ready(function () {
     $(".movie-rating").text("IMDb Rating: " + data.imdbRating);
   }
 
-  $("#search-form").submit(function (event) {
+  $("#search-button").on("click", function (event) {
     event.preventDefault();
+
     var movieTitle = $("#search-input").val().trim();
-    console.log("Form submitted");
 
     if (movieTitle !== "") {
       fetchMovieData(movieTitle);
