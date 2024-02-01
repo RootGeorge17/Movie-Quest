@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Bootstrap CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Movie Quest</title>
-  </head>
-  <body>
-<!-- 
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Movie Quest</title>
+</head>
+
+<body>
+  <!-- 
     <form id="form" role="search">
       <input type="search" id="query" name="q"
        placeholder="Search..."
@@ -25,119 +23,113 @@
       <button>Submit</button>
     </form> -->
 
-    <header class="container-fluid text-md-center text-warning p-2 weather-title">
-      <h1 clas="col-md-6 ">Movie Quest</h1>
-    </header>
-  
-      <!-- max-width for ultra wide resolutions for the Weather Dashboard -->
-      <div class="container-fluid" style="max-width: 1400px">
-        <div class="row">
-        <!-- Search bar section -->
-          <aside class="col-lg-3 pb-3 searchBar">
-            <h2 id="form-heading" class="mt-4 h3 form-label">Search Movie</h2>
-            <form id="search-form" class="form ">
-              <div class=" input-group mb-6 search-section d-flex justify-content-center">
-                    <!-- submit button -->
-                <input
-                    class="form-control movie-search  max-height"
-                    type="text"
-                    id="search-input"
-                    placeholder="Enter Movie name"
-                    aria-labelledby="form-heading"
-                    aria-controls="today forecast"
-                    required 
-                    />
-                    <button type="submit" class="btn btn-warning search-btn" id="search-button" 
-                    aria-label="submit search">
-                    <i class="bi bi-search"></i>
-                    </button>
-                </div>
-              </form>
-              </aside>
-    
-               
-              
-              <!-- Showing current  movie  -->
-               
-                <div class="container current-movie col-10">
-                  <div class="movieDetails"></div>
-                  <h2 class="card-title currentMovie"></h2>
-                  <div class="movie-data poster">
-                  <img class="movie-poster" alt="movie-poster">
-                  <h4 class="mb-1 iconTitle"> Movie title</h4>
-                  <h4 class="movie-cast">movie cast</h4>
-                  <h4 class="release-date">Release date</h4>
-                  <h4 class="movie-rating">Movie Rating</h4>
-                  
-                 </div>
-                </div>
-              </div>
+  <header class="container-fluid text-md-center text-warning p-2 weather-title">
+    <h1 clas="col-md-6 ">Movie Quest</h1>
+  </header>
 
-          <!-- trailer displayed here a lot of issue displyed in the console  because of this link-->
+  <!-- max-width for ultra wide resolutions for the Weather Dashboard -->
+  <div class="container-fluid" style="max-width: 1400px">
+    <div class="row">
+      <!-- Search bar section -->
+      <aside class="col-lg-3 pb-3 searchBar">
+        <h2 id="form-heading" class="mt-4 h3 form-label">Search Movie</h2>
+        <form id="search-form" class="form ">
+          <div class=" input-group mb-6 search-section d-flex justify-content-center">
+            <!-- submit button -->
+            <input class="form-control movie-search  max-height" type="text" id="search-input"
+              placeholder="Enter Movie name" aria-labelledby="form-heading" aria-controls="today forecast" required />
+            <button type="submit" class="btn btn-warning search-btn" id="search-button" aria-label="submit search">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </aside>
 
-   <div class="movieContainer">
-    <!-- <div class="embed-responsive embed-responsive-16by9 d-flex justify-content-center mt-5">
+
+
+      <!-- Showing current  movie  -->
+
+      <div class="container current-movie col-10">
+        <div class="movieDetails"></div>
+        <h2 class="d-flex justify-content-center  currentMovie"></h2>
+        <div class="movie-data poster">
+          <img class="movie-poster" alt="movie-poster">
+          <h4 class="mb-1 iconTitle"> Movie title</h4>
+          <h4 class="movie-cast">movie cast</h4>
+          <h4 class="release-date">Release date</h4>
+          <h4 class="movie-rating">Movie Rating</h4>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- trailer displayed here a lot of issue displyed in the console  because of this link-->
+
+    <div class="movieContainer">
+      <!-- <div class="embed-responsive embed-responsive-16by9 d-flex justify-content-center mt-5">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/xy1v0pzMP4g?si=N3epuXV2y1OybbSU"
      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
      picture-in-picture; web-share" allowfullscreen></iframe>
     </div> -->
-   </div>
-          
-          
-          <!-- Search history  it would be easier to creat it through js using a loop-->
-         <div class="container">
-          
-        
-          <div class="row mt-5 justify-content-center">
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    </div>
 
+
+    <!-- Search history  it would be easier to creat it through js using a loop-->
+    <div class="container">
+
+
+      <div class="row mt-5 justify-content-center">
+        <div class="col-lg-2 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <img src="" class="img-fluid" alt="movie-poster">
+              <p class="card-title">Movie title</p>
+            </div>
           </div>
-          
+        </div>
+        <div class="col-lg-2 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <img src="" class="img-fluid" alt="movie-poster">
+              <p class="card-title">Movie title</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <img src="" class="img-fluid" alt="movie-poster">
+              <p class="card-title">Movie title</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <img src="" class="img-fluid" alt="movie-poster">
+              <p class="card-title">Movie title</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <img src="" class="img-fluid" alt="movie-poster">
+              <p class="card-title">Movie title</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
 
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/app.js"></script>
-  </body>
+    <script src="./assets/js/movieapi.js"></script>
+</body>
+
 </html>
