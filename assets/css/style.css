@@ -1,5 +1,4 @@
 form {
-  background-color: #4654e1;
   width: 300px;
   height: 44px;
   border-radius: 5px;
@@ -37,6 +36,8 @@ body {
   background: url('../images/backgroundImages.jpg');
   background-size: cover;
   color: var(--font--color-body);
+  background-color: #0d1b2a;
+  color: white;
 }
 
 h1.h2,
@@ -58,6 +59,10 @@ h4 {
   max-width: 800px;
 }
 
+.max-height {
+  height: max-content;
+}
+
 /*currentweather displayed */
 
 /* title names */
@@ -72,12 +77,17 @@ h4 {
   justify-content: space-evenly;
 }
 
-.weather-data {
+.movie-data {
   padding: 15px;
   text-align: center;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #14213d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
+}
+
+.card {
+  background-color: #14213d;
+  color: white;
 }
 
 .weather-data {
@@ -154,17 +164,11 @@ h4 {
 /* five day weather cards  */
 
 .fiveDayContainer {
-  background-color: transparent;
+  background-color: #14213d;
   border-radius: 10px;
   display: flex;
   margin: -11px auto;
   justify-content: space-between;
-}
-
-.WeatherForecast {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
 }
 
 .cardLayout {
