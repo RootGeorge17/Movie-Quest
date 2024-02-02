@@ -16,11 +16,16 @@ $("#search-button").on("click", function (event) {
 
   console.log("Movie Trailer Name:", searchMovieTrailer);
 
-  // if a movie is not provided it will avoids the api call to go ahead 
-  // if (!searchMovieTrailer.trim()) {
-  //  console.log("A Movie is not provided");
-  //  return;
-  // }
+  //if a user search is empty an alert will be displayed
+  if (searchMovieTrailer.trim() == "") {
+    const alertTime = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Attention! Please enter a movie!</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+    $("#alert-container").append(alertTime);
+    console.log(searchMovieTrailer);
+  }
+
+
 
   //url
   queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieTrailer)}&type=video&videoType=movie&key=${apiKey}`;
