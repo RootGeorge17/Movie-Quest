@@ -13,6 +13,18 @@ $(document).ready(function () {
   }
 
   function showMovieData(data) {
+    $(".current-movie").append(`
+        <div class="movieDetails"></div>
+        <h2 class="card-title currentMovie"></h2>
+        <div class="movie-data poster">
+          <img class="movie-poster" alt="movie-poster">
+          <h4 class="mb-1 iconTitle"> Movie title</h4>
+          <h4 class="movie-cast">movie cast</h4>
+          <h4 class="release-date">Release date</h4>
+          <h4 class="movie-rating">Movie Rating</h4>
+        </div>
+      `);
+
     $(".currentMovie").text(data.Title);
     $(".iconTitle").text(data.Title);
     $(".movie-poster").attr("src", data.Poster);
