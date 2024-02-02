@@ -17,24 +17,20 @@
     <title>Movie Quest</title>
   </head>
   <body>
-<!-- 
-    <form id="form" role="search">
-      <input type="search" id="query" name="q"
-       placeholder="Search..."
-       aria-label="Search through site content">
-      <button>Submit</button>
-    </form> -->
+
+    
 
     <header class="container-fluid text-md-center text-warning p-2 weather-title">
       <h1 clas="col-md-6 ">Movie Quest</h1>
     </header>
   
-      <!-- max-width for ultra wide resolutions for the Weather Dashboard -->
       <div class="container-fluid" style="max-width: 1400px">
         <div class="row">
         <!-- Search bar section -->
           <aside class="col-lg-3 pb-3 searchBar">
             <h2 id="form-heading" class="mt-4 h3 form-label">Search Movie</h2>
+            <div id=“alert-container”></div>
+
             <form id="search-form" class="form ">
               <div class=" input-group mb-6 search-section d-flex justify-content-center">
                     <!-- submit button -->
@@ -73,71 +69,20 @@
                 </div>
               </div>
 
-          <!-- trailer displayed here a lot of issue displyed in the console  because of this link-->
-
-   <div class="movieContainer">
-    <!-- <div class="embed-responsive embed-responsive-16by9 d-flex justify-content-center mt-5">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/xy1v0pzMP4g?si=N3epuXV2y1OybbSU"
-     title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
-     picture-in-picture; web-share" allowfullscreen></iframe>
-    </div> -->
+          <!-- trailer displayed here-->
+    <div class=“card movie-card”>
+   <div class=" container justify-content-center movieContainer">
+    
    </div>
-          
-          
-          <!-- Search history  it would be easier to creat it through js using a loop-->
-         <div class="container">
-          
+  </div>    
+    
         
-          <div class="row mt-5 justify-content-center">
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2 mb-3 mb-sm-0">
-              <div class="card">
-                <div class="card-body">
-                  <img src="" class="img-fluid" alt="movie-poster">     
-                  <p class="card-title">Movie title</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          </div>
-          
-
-
+        
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/app.js"></script>
-  </body>
+    <script src="./assets/js/movieapi.js"></script>
+</body>
+
 </html>
