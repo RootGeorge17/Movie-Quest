@@ -17,12 +17,13 @@ $("#search-button").on("click", function (event) {
   console.log("Movie Trailer Name:", searchMovieTrailer);
 
   //if a user search is empty an alert will be displayed
-  if (searchMovieTrailer.trim() == "") {
+  if (searchMovieTrailer === "") {
     const alertTime = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
       <strong>Attention! Please enter a movie!</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
     $("#alert-container").append(alertTime);
     console.log(searchMovieTrailer);
+    return;
   }
 
 
