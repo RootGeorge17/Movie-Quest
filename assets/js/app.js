@@ -19,7 +19,7 @@ $("#search-button").on("click", function (event) {
   //if a user search is empty an alert will be displayed
   if (searchMovieTrailer === "") {
     const alertTime = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>Attention! Please enter a movie!</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <strong>Attention! Please enter a movie</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
     $("#alert-container").append(alertTime);
     console.log(searchMovieTrailer);
@@ -62,6 +62,10 @@ function addMovieTrailer(data) {
 
   //Append the youtube video to the webpage
   $(".movieContainer").html(iframeEl);
+
+  //Present the movie card when the trailer is searched
+  $(".movie-card").show();
+
 
 }
 
