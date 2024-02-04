@@ -1,25 +1,26 @@
 # Movies Web Application
 
-![]()
+![Movie Hero]()
 
 ## Description
 
 -
 
-## Table of Contents
+## Table of Contents 
 
-- [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
+- [Installation](#installation)
+- [Collaborators](#collaborators)
 - [License](#license)
-
 
 ## Usage
 
 #### Access the application on: -
 #### The following images show the application's appearance and functionality:
 
-![]()
+![Movie-Quest screenshot - search page](./assets/images/Landingpage.PNG)
+
+![Movie-Quest screenshot - results page](./assets/images/search%20results.PNG)
 
 ## Installation
 
@@ -38,7 +39,7 @@
 ## Collaborators 
 This project was made possible by the following contributors:
 
-- Benson, Rosemary
+- Benson, Rosemary [Github Link](https://github.com/RoseBenson)
 - Djouama, Mohamed
 - Khail, Said
 - Sopov, George
@@ -46,6 +47,6 @@ This project was made possible by the following contributors:
 
 ## License
 
-![MIT License](https://img.shields.io/badge/MIT-blue.svg)
+![MIT License](https://img.shields.io/badge/MIT-blue.svf)
 
 
