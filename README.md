@@ -15,6 +15,7 @@ But that is not all! We added a personal touch by allowing users to save their f
 - [Installation](#installation)
 - [Collaborators](#collaborators)
 - [Technologies](#technologies)
+- [APIs](#apis)
 - [License](#license)
 
 ## Usage
@@ -59,6 +60,11 @@ This project was made possible by the following contributors:
 - Javascript
 - Bootstrap
 - jQuery
+
+## APIs 
+
+- [Youtube API](https://developers.google.com/youtube/v3/docs)
+- [OMDb API](https://www.omdbapi.com/)
 
 ## License
 
