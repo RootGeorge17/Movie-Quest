@@ -11,6 +11,7 @@
 - [Usage](#usage)
 - [Installation](#installation)
 - [Collaborators](#collaborators)
+- [Technologies](#technologies)
 - [License](#license)
 
 ## Usage
@@ -43,10 +44,12 @@
 This project was made possible by the following contributors:
 
 - Benson, Rosemary [Github Link](https://github.com/RoseBenson)
-- Djouama, Mohamed
-- Khail, Said
-- Sopov, George
-- Yildiz, Yusuf sercan
+- Djouama, Mohamed [Github Link](https://github.com/Medj41)
+- Khail, Said [Github Link](https://github.com/SKhail)
+- Sopov, George [Github Link](https://github.com/RootGeorge17)
+- Yildiz, Yusuf sercan [Github Link](https://github.com/yildizsrcn)
+
+## Technologies 
 
 ## License
 
