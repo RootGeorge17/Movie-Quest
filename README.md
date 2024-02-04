@@ -4,7 +4,10 @@
 
 ## Description
 
--
+- We as the Team are excited to introduce you to Movie-Quest. With Movie-Quest users can easily search for their movie that they are interested to know more information such as the Casts, Release dates, The most recent rating and the ability to watch the trailer all in one place.
+
+But that is not all! We added a personal touch by allowing users to save their favourite movies by checking their watchlist for easy access.
+
 
 ## Table of Contents 
 
@@ -50,6 +53,12 @@ This project was made possible by the following contributors:
 - Yildiz, Yusuf sercan [Github Link](https://github.com/yildizsrcn)
 
 ## Technologies 
+
+- HTML
+- CSS
+- Javascript
+- Bootstrap
+- jQuery
 
 ## License
 
