@@ -47,6 +47,6 @@ This project was made possible by the following contributors:
 
 ## License
 
-![MIT License](https://img.shields.io/badge/MIT-blue.svf)
+![MIT License](./assets/images/License-MIT-blue.svg)
 
 
