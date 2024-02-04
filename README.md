@@ -1,6 +1,6 @@
 # Movies Web Application
 
-![Movie Hero]()
+![Movie Hero](./assets/images/moviehero2.jpg)
 
 ## Description
 
