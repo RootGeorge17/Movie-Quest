@@ -15,12 +15,15 @@
 
 ## Usage
 
-#### Access the application on: -
+#### Access the application on: - 
+
+[Link to deployed page](https://rootgeorge17.github.io/Movie-Quest/)
+
 #### The following images show the application's appearance and functionality:
 
-![Movie-Quest screenshot - search page](./assets/images/Landingpage.PNG)
+![Movie-Quest screenshot - search page](./assets/images/Landingpagemain.PNG)
 
-![Movie-Quest screenshot - results page](./assets/images/search%20results.PNG)
+![Movie-Quest screenshot - results page](./assets/images/searchresults2.PNG)
 
 ## Installation
 
