@@ -1,8 +1,18 @@
 # Movies Web Application
 
+![]()
+
 ## Description
 
 -
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+
 
 ## Usage
 
@@ -36,4 +46,6 @@ This project was made possible by the following contributors:
 
 ## License
 
-MIT License
+![MIT License](https://img.shields.io/badge/MIT-blue.svg)
+
+
