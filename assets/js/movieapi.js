@@ -1,3 +1,6 @@
+// global Variable  to use in the WatchList Section to get the Image
+var moviesData;
+
 $(document).ready(function () {
   function fetchMovieData(movieTitle) {
     var API_KEY = 'a63915c0';
