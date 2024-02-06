@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   function fetchMovieData(movieTitle) {
     var API_KEY = 'a63915c0';
     var movieURL = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movieTitle)}`;
@@ -8,11 +9,14 @@ $(document).ready(function () {
         return response.json();
       })
       .then(function (data) {
+        localStorage.setItem("searchMovieName", JSON.stringify(data));
         showMovieData(data);
       });
   }
 
   function showMovieData(data) {
+    $(".current-movie").empty();
+
     $(".current-movie").append(`
         <div class="movieDetails"></div>
         <h2 class="card-title currentMovie"></h2>
@@ -33,6 +37,7 @@ $(document).ready(function () {
     $(".movie-rating").text("IMDb Rating: " + data.imdbRating);
   }
 
+  // Search Button Event Listener
   $("#search-button").on("click", function (event) {
     event.preventDefault();
 
