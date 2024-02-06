@@ -44,7 +44,7 @@ function addMovieTrailer(data) {
 
   //displaying the video in the webpage by using iframes and will be muted once its play 
   const youtubeSrc = `https://www.youtube.com/embed/${video}`;
-  const iframeEl = `<iframe id="player" type="text/html" src="${youtubeSrc}" frameborder="0"></frame>`;
+  const iframeEl = `<iframe id="player" type="text/html" src="${youtubeSrc}" frameborder="0" height="500"></iframe>`;
 
   //Append the youtube video to the webpage
   $(".movieContainer").html(iframeEl);
