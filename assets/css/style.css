@@ -1,77 +1,201 @@
-    
-  form {
-    width: 300px;
-    height: 44px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
+a {
+  text-decoration: none;
+  transition: color 0.1s;
+}
 
-  input {
-    all: unset;
-    font: 16px system-ui;
-    color: #fff;
-    height: 100%;
-    width: 100%;
-    padding: 6px 10px;
-    
-  }
-  
-  ::placeholder {
-    color: #fff;
-    opacity: 0.7; 
-  }
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #0d1b2a;
+  color: white;
+}
 
-  
-  
-  body {
-    background-size: cover;
-    background-color: #0d1b2a;
-    color: white;
-  }
-  
-  
-  .searchBar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 800px;
-    
-  }
+form {
+  width: 300px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
-  .max-height{
-    height: max-content;
-  }
+input {
+  all: unset;
+  font: 16px system-ui;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+}
 
-  
-  
-  
-  
-  
-  
-  .movie-data {
-    padding: 15px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #14213d;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
-  }
+::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
 
-  .card{
-    background-color: #14213d;
-    color: white;
-  }
-  
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.max-height {
+  height: max-content;
+}
+
+.movie-data {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #14213d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
+}
+
+.cards {
+  background-color: #14213d;
+  color: white;
+}
+
+.movie-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 3rem;
+  transition: box-shadow 0.3s;
+}
+
+.alert-container {
+  z-index: 11;
+}
+
+img {
+  width: 100%;
+}
+
+.poster {
+  max-width: 30rem;
+  min-width: 10rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.current-movie {
+  max-width: 70rem;
+  padding: 2rem;
+  min-width: 10rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Movie Trailer */
+.movieContainer {
+  max-width: 70rem;
+  min-width: 10rem;
+  padding: 3rem;
+}
+
+/* To hide Movie Trailer and only be shown when its searched */
+.movie-card {
+  display: none;
+}
+
+iframe {
+  width: 100%;
+}
+
+.search-section {
+  padding: 2rem;
+}
+
+.movie-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+/* WatchList for Searched Movies */
+
+.watch-list {
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  border-radius: 2px;
+  padding: 5px 5px;
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  align-items: center;
+}
+/* 
+watchlist button */
+#watchlist-link {
+  padding: 0px 20px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
  
-  .movie-card {
-    margin-top: 20px;
-    transition: box-shadow 0.3s;
-  }
-  
-  
-  .alert-container {
-    z-index: 11;
-  }
+}
+.watch-list:hover {
+  background-color: #14213d;
+}
+
+.wrapper {
+  margin: 100px auto 0 auto;
+  max-width: 600px;
+  background-color: #14213d;
+}
+
+.watchlist-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  /* scrollbar-width: #14213d #e50914; */
+  gap: 0px;
+}
+
+.card-title {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.card {
+  background-color: #14213d;
+  border: none;
+  width: 200px;
+  border: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: 150px;
+}
+
+/* buttons for the watchlist */
+#clear {
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
