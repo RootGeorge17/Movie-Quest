@@ -119,7 +119,7 @@ iframe {
 /* WatchList for Searched Movies */
 
 .watch-list {
-  position:fixed;
+  position:absolute;
   top: 10px;
   left: 10px;
   cursor: pointer;
