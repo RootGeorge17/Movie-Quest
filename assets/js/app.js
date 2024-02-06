@@ -1,9 +1,3 @@
-console.log("App is working");
-
-//global scope 
-let queryUrl = '';
-
-//Searching for a Movies
 $("#search-button").on("click", function (event) {
   event.preventDefault();
 
@@ -13,21 +7,16 @@ $("#search-button").on("click", function (event) {
   //Getting the movie from the search bar adding it in the API
   searchMovieName = $("#search-input").val().trim();
 
-  console.log("Movie Trailer Name:", searchMovieName);
-
   //if a user search is empty an alert will be displayed
   if (searchMovieName === "") {
-    const alertTime = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong> Attention! Enter a movie</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>`;
-    $("#alert-container").append(alertTime);
-    console.log(searchMovieName);
+    $("#alert-container").append(`
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong> Attention! Enter a movie</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`);
     return;
   }
 
-  //url
-  queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName)}&type=video&videoType=movie&key=${apiKey}`;
-  console.log(`"API URL, ${queryUrl}`);
+  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName)}&type=video&videoType=movie&key=${apiKey}`;
 
   //Fetching the API Call 
   fetch(queryUrl)
@@ -35,18 +24,11 @@ $("#search-button").on("click", function (event) {
       return response.json(); //This process is waiting for the response and parsing it into JSON format
     })
     .then(function (results) {
-      console.log(results);
-
       const moviesData = results.items.map(item => ({
         title: item.snippet.title,
-
       }));
 
-      //storing the data in the local storage 
-      localStorage.setItem("searchMovieName", JSON.stringify(moviesData));
-
       showWatchlist(moviesData);
-
       addMovieTrailer(results);
     })
     .catch(function (error) {
@@ -64,8 +46,6 @@ function addMovieTrailer(data) {
   const youtubeSrc = `https://www.youtube.com/embed/${video}`;
   const iframeEl = `<iframe id="player" type="text/html" src="${youtubeSrc}" frameborder="0"></frame>`;
 
-  // console.log(`Iframe : ${iframeEl}`);
-
   //Append the youtube video to the webpage
   $(".movieContainer").html(iframeEl);
 
@@ -77,55 +57,44 @@ function addMovieTrailer(data) {
 $("#watchlist-btn").on("click", function (event) {
   event.preventDefault();
 
-
   //Head to the watchlist
   window.location.href = "watchlist.html";
-
-
 });
 
 $(document).ready(function () {
-
   const storedMovies = localStorage.getItem("searchMovieName");
-  console.log("storage is ", storedMovies);
   // Parse it and be stored in a array as a JSON
   if (storedMovies !== null) {
     const getMovies = JSON.parse(storedMovies) || [];
-    console.log("Display", getMovies);
 
     //show the movies in the watchlist page 
-    showWatchlist(getMovies);
-    console.log(getMovies);
+    showWatchlist([getMovies]);
   }
 });
 
 function showWatchlist(getMovies) {
+  $(".watchlist-container").empty();
 
-  //clear 
-  $(".watchlist-container").empty()
-
+  // Iterate over getMovies
   getMovies.forEach(function (movie, index) {
-
     //show only the first video 
     if (index === 0) {
       // add the image for the video 
       const posterImage = $("<img>");
-      posterImage.attr("src", movie.poster)
-      $(".watchlist-container").append(posterImage)
-      // const watchVideoList = $("<div>").text(movie.title);
-      console.log("Display succesffully", posterImage);
+      posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
+      $(".watchlist-container").append(posterImage);
 
-      //creating the movie cards 
+      //creating the movie card 
+      const movieCard = `
+          <div>
+            <h1 class="card-title">${movie.Title}</h1>
+            <h3 class="card-title">${movie.Actors}</h3>
+            <h3 class="card-title">${movie.Released}</h3>
+            <h3 class="card-title">${movie.imdbRating}</h3>
+          </div>`;
 
-      const movieCards = `<div class="card mb-3 style="18rem";>
-      <img src="${posterImage}" class="card-img-top" alt="Movie Thumbnail">
-          <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
-            </div>
-            </div>`;
       //adding it in the watchlist container 
-      $(".watchlist-container").append(movieCards)
-      console.log("display sucessfully", movieCards);
+      $(".watchlist-container").append(movieCard);
     }
   });
 }
@@ -134,11 +103,9 @@ function showWatchlist(getMovies) {
 $("#Clear").on("click", function (event) {
   event.preventDefault();
 
-
   //remove storage
   localStorage.removeItem("searchMovieName");
 
   // clear the container 
   $(".watchlist-container").empty()
-
 });

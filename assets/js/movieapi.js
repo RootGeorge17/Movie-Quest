@@ -1,7 +1,5 @@
-// global Variable  to use in the WatchList Section to get the Image
-var moviesData;
-
 $(document).ready(function () {
+
   function fetchMovieData(movieTitle) {
     var API_KEY = 'a63915c0';
     var movieURL = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movieTitle)}`;
@@ -11,6 +9,7 @@ $(document).ready(function () {
         return response.json();
       })
       .then(function (data) {
+        localStorage.setItem("searchMovieName", JSON.stringify(data));
         showMovieData(data);
       });
   }
@@ -38,6 +37,7 @@ $(document).ready(function () {
     $(".movie-rating").text("IMDb Rating: " + data.imdbRating);
   }
 
+  // Search Button Event Listener
   $("#search-button").on("click", function (event) {
     event.preventDefault();
 
