@@ -5,7 +5,7 @@ $("#search-button").on("click", function (event) {
   const apiKey = "AIzaSyCPh_nvXp0kulhY-W1zMJ1jpQBQ2sIsoew";
 
   //Getting the movie from the search bar adding it in the API
-  searchMovieName = $("#search-input").val().trim();
+  searchMovieName = $("#search-input").val().trim() + " trailer";
 
   //if a user search is empty an alert will be displayed
   if (searchMovieName === "") {
