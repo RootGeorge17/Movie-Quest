@@ -16,6 +16,8 @@ $(document).ready(function () {
   }
 
   function showMovieData(data) {
+    $(".current-movie").empty();
+
     $(".current-movie").append(`
         <div class="movieDetails"></div>
         <h2 class="card-title currentMovie"></h2>
