@@ -26,7 +26,7 @@ $(document).ready(function () {
           <h4 class="movie-cast">movie cast</h4>
           <h4 class="release-date">Release date</h4>
           <h4 class="movie-rating">Movie Rating</h4>
-          <div class="col-lg-6 d-flex justify-content-center btn btn-outline-warning mt-3 addMovie" <button class="" data-movie-title="${data.Title}"
+          <div class="col d-flex justify-content-center btn btn-outline-warning mt-3 addMovie" <button class="" data-movie-title="${data.Title}"
           data-movie-poster="${data.Poster}" data-movie-actors="${data.Actors}"
           data-movie-released="${data.Released}" data-movie-imdb-rating="${data.imdbRating}">
           <i class="bi bi-heart-fill"></i>
