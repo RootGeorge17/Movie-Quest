@@ -58,17 +58,20 @@ function addMovieTrailer(data) {
 function showWatchlist(getMovies) {
   $(".watchlist-container").empty();
 
-  // Iterate over getMovies
-  getMovies.forEach(function (movie, index) {
-    //show only the first video 
-    if (index === 0) {
-      // add the image for the video 
-      const posterImage = $("<img>");
-      posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
-      $(".watchlist-container").append(posterImage);
+  // to have a maxium of 5 cards show in the watchlist
+  const maxMovieShow = 5;
+  const maxMovies = getMovies.slice(0, maxMovieShow)
 
-      //creating the movie card 
-      const movieCard = `
+  // Iterate over getMovies
+  maxMovies.forEach(function (movie) {
+
+    // add the image for the video 
+    const posterImage = $("<img>");
+    posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
+    $(".watchlist-container").append(posterImage);
+
+    //creating the movie card 
+    const movieCard = `
           <div>
             <h1 class="card-title">${movie.Title}</h1>
             <h3 class="card-title">${movie.Actors}</h3>
@@ -76,11 +79,12 @@ function showWatchlist(getMovies) {
             <h3 class="card-title">${movie.imdbRating}</h3>
           </div>`;
 
-      //adding it in the watchlist container 
-      $(".watchlist-container").append(movieCard);
-    }
+    //adding it in the watchlist container 
+    $(".watchlist-container").append(movieCard);
+
   });
 }
+
 
 //clear btn 
 $("#Clear").on("click", function (event) {
@@ -127,8 +131,11 @@ $(".addMovie").on("click", function (event) {
 
   // Once gettin the data it will store the updated data to local storage 
   localStorage.setItem("movieList", JSON.stringify(watchListStored));
-  alert("Movie has been Added to the WatchList");
+  $("#alert-success").fadeIn();
 
+  setTimeout(function () {
+    $("#alert-success").fadeOut();
+  }, 3000);
 });
 
 
