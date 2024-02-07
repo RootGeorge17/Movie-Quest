@@ -16,14 +16,20 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
-    <header class="container-fluid text-center p-4">
-      <a class="navbar-brand text-white mx-auto movie-title" href="index.html">Movie-Quest</a>
-      <div class="watch-list">
-        <a href="watchlist.html" id="watchlist-link" class="btn btn-outline-warning">
-          <i class="bi bi-heart-fill"></i>
-          WatchList
-        </a>
+    
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert-success" style="display:none">Movie Added to WatchList
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <nav class="navbar navbar-expand bg-warning">
+    <header class="container-fluid">
+      <a class="navbar-brand mx-auto movie-title" href="index.html">Movie-Quest</a>
+      <div class="d-flex align-items-center">
+        <div class="watch-list me-3">
+          <a href="watchlist.html" id="watchlist-link" class="btn btn-outline-warning">
+            <i class="bi bi-heart-fill"></i>
+            WatchList
+          </a>
+        </div>
       </div>
     </header>
   </nav>
@@ -31,7 +37,7 @@
     <div class="row">
       <!-- Search bar section -->
       <aside class="col-lg-3 pb-3 searchBar">
-        <h2 id="form-heading" class="mt-4 h3 form-label">Search Movie</h2>
+        <h2 id="form-heading" class="mt-4 h3 form-label mb-4"></h2>
         <div id="alert-container"></div>
         <form id="search-form" class="form">
           <div class="input-group mb-6 search-section d-flex justify-content-center">
@@ -43,24 +49,40 @@
             </button>
           </div>
         </form>
+        <!--  movie btn to watch-list button -->
+        <div class="col-lg-6 btn btn-outline-warning mt-3 addMovie" <button class="" data-movie-title="${movie.Title}"
+          data-movie-poster="${movie.Poster}" data-movie-actors="${movie.Actors}"
+          data-movie-released="${movie.Released}" data-movie-imdb-rating="${movie.imdbRating}">
+          <i class="bi bi-heart-fill"></i>
+          Add Movie
+          </button>
+        </div>
       </aside>
-      <!-- Showing current  movie  -->
-      <div class="container current-movie col-10"></div>
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- Showing current  movie  -->
+          <div class="container current-movie">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <!-- trailer displayed here-->
+          <div class="cards movie-card">
+            <div class="max-height container movieContainer"></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <!-- trailer displayed here-->
-  <div class="cards movie-card">
-    <div class="max-height container movieContainer"></div>
-  </div>
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-  <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/app.js"></script>
-  <script src="./assets/js/movieapi.js"></script>
-</body>
-
+    </div>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/movieapi.js"></script>
+  </body>
 </html>

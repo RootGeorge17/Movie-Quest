@@ -6,6 +6,7 @@ $("#search-button").on("click", function (event) {
 
   //Getting the movie from the search bar adding it in the API
   searchMovieName = $("#search-input").val().trim();
+  console.log(searchMovieName);
 
   //if a user search is empty an alert will be displayed
   if (searchMovieName === "") {
@@ -16,7 +17,8 @@ $("#search-button").on("click", function (event) {
     return;
   }
 
-  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName)}&type=video&videoType=movie&key=${apiKey}`;
+  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName + " trailer")}&type=video&videoCategoryId=1&key=${apiKey}`;
+  console.log(queryUrl);
 
   //Fetching the API Call 
   fetch(queryUrl)
@@ -30,9 +32,11 @@ $("#search-button").on("click", function (event) {
 
       showWatchlist(moviesData);
       addMovieTrailer(results);
+
     })
     .catch(function (error) {
-      console.error(`Error Occurred when Fetching the Youtube API ${error}`);    //handling if an error occurs when fetching 
+      //handling if an error occurs when fetching 
+      console.error(`Error Occurred when Fetching the Youtube API ${error}`);
     });
 });
 
@@ -41,7 +45,7 @@ function addMovieTrailer(data) {
 
   //finding
   const video = data.items[0].id.videoId;
-
+  console.log(video);
   //displaying the video in the webpage by using iframes and will be muted once its play 
   const youtubeSrc = `https://www.youtube.com/embed/${video}`;
   const iframeEl = `<iframe id="player" type="text/html" src="${youtubeSrc}" frameborder="0" height="500"></iframe>`;
@@ -53,39 +57,23 @@ function addMovieTrailer(data) {
   $(".movie-card").show();
 }
 
-//This will be focusing on WatchList for users
-$("#watchlist-btn").on("click", function (event) {
-  event.preventDefault();
-
-  //Head to the watchlist
-  window.location.href = "watchlist.html";
-});
-
-$(document).ready(function () {
-  const storedMovies = localStorage.getItem("searchMovieName");
-  // Parse it and be stored in a array as a JSON
-  if (storedMovies !== null) {
-    const getMovies = JSON.parse(storedMovies) || [];
-
-    //show the movies in the watchlist page 
-    showWatchlist([getMovies]);
-  }
-});
-
 function showWatchlist(getMovies) {
   $(".watchlist-container").empty();
 
-  // Iterate over getMovies
-  getMovies.forEach(function (movie, index) {
-    //show only the first video 
-    if (index === 0) {
-      // add the image for the video 
-      const posterImage = $("<img>");
-      posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
-      $(".watchlist-container").append(posterImage);
+  // to have a maxium of 5 cards show in the watchlist
+  const maxMovieShow = 5;
+  const maxMovies = getMovies.slice(0, maxMovieShow)
 
-      //creating the movie card 
-      const movieCard = `
+  // Iterate over getMovies
+  maxMovies.forEach(function (movie) {
+
+    // add the image for the video 
+    const posterImage = $("<img>");
+    posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
+    $(".watchlist-container").append(posterImage);
+
+    //creating the movie card 
+    const movieCard = `
           <div>
             <h1 class="card-title">${movie.Title}</h1>
             <h3 class="card-title">${movie.Actors}</h3>
@@ -93,11 +81,12 @@ function showWatchlist(getMovies) {
             <h3 class="card-title">${movie.imdbRating}</h3>
           </div>`;
 
-      //adding it in the watchlist container 
-      $(".watchlist-container").append(movieCard);
-    }
+    //adding it in the watchlist container 
+    $(".watchlist-container").append(movieCard);
+
   });
 }
+
 
 //clear btn 
 $("#Clear").on("click", function (event) {
@@ -109,3 +98,69 @@ $("#Clear").on("click", function (event) {
   // clear the container 
   $(".watchlist-container").empty()
 });
+
+//Add a Movie to WatchList 
+$(".addMovie").on("click", function (event) {
+  event.preventDefault();
+
+  // Get it from the data-attribute 
+  const movieTitle = $(this).data("movie-title");
+  console.log(movieTitle);
+  const moviePoster = $(this).data("movie-poster");
+  console.log(moviePoster);
+  const movieActors = $(this).data("movie-actors");
+  console.log(movieActors);
+  const movieReleased = $(this).data("movie-released");
+  console.log(movieReleased);
+  const movieRating = $(this).data("movie-imdbRating");
+  console.log(movieRating);
+
+  // Movie Object
+  const movie = {
+    Title: movieTitle,
+    Poster: moviePoster,
+    Actors: movieActors,
+    Released: movieReleased,
+    Rating: movieRating
+  }
+  console.log("Objects Working", movie);
+
+  // Geting the data from the localstorage
+  let watchListStored = JSON.parse(localStorage.getItem("movieList")) || [];
+
+  //pushing the new movie into the watchlist arr
+  watchListStored.push(movie)
+
+  // Once gettin the data it will store the updated data to local storage 
+  localStorage.setItem("movieList", JSON.stringify(watchListStored));
+  $("#alert-success").fadeIn();
+
+  setTimeout(function () {
+    $("#alert-success").fadeOut();
+  }, 3000);
+});
+
+
+//This is the WatchList button on the navbar for users to see whats added
+//This will be focusing on WatchList for users
+$("#watchlist-btn").on("click", function (event) {
+  event.preventDefault();
+
+  //Head to the watchlist
+  window.location.href = "watchlist.html";
+});
+
+
+
+
+
+// $(document).ready(function () {
+//   const storedMovies = localStorage.getItem("searchMovieName");
+//   // Parse it and be stored in a array as a JSON
+//   if (storedMovies !== null) {
+//     const getMovies = JSON.parse(storedMovies) || [];
+
+//     //show the movies in the watchlist page 
+//     showWatchlist([getMovies]);
+//   }
+// });

@@ -29,7 +29,6 @@ $(document).ready(function () {
         </div>
       `);
 
-    $(".currentMovie").text(data.Title);
     $(".iconTitle").text(data.Title);
     $(".movie-poster").attr("src", data.Poster);
     $(".movie-cast").text("Cast: " + data.Actors);
