@@ -1,3 +1,5 @@
+var watchListStored = '';
+
 $("#search-button").on("click", function (event) {
   event.preventDefault();
 
@@ -87,7 +89,6 @@ function showWatchlist(getMovies) {
   });
 }
 
-
 //clear btn 
 $("#Clear").on("click", function (event) {
   event.preventDefault();
@@ -99,68 +100,55 @@ $("#Clear").on("click", function (event) {
   $(".watchlist-container").empty()
 });
 
-//Add a Movie to WatchList 
-$(".addMovie").on("click", function (event) {
-  event.preventDefault();
+$(document).ready(function () {
+  $(".current-movie").on("click", ".addMovie", function (event) {
+    event.preventDefault();
 
-  // Get it from the data-attribute 
-  const movieTitle = $(this).data("movie-title");
-  console.log(movieTitle);
-  const moviePoster = $(this).data("movie-poster");
-  console.log(moviePoster);
-  const movieActors = $(this).data("movie-actors");
-  console.log(movieActors);
-  const movieReleased = $(this).data("movie-released");
-  console.log(movieReleased);
-  const movieRating = $(this).data("movie-imdbRating");
-  console.log(movieRating);
+    // Get it from the data-attribute 
+    const movieTitle = $(this).data("movie-title");
+    console.log(movieTitle);
+    const moviePoster = $(this).data("movie-poster");
+    console.log(moviePoster);
+    const movieActors = $(this).data("movie-actors");
+    console.log(movieActors);
+    const movieReleased = $(this).data("movie-released");
+    console.log(movieReleased);
+    const movieRating = $(this).data("movie-imdb-rating");
+    console.log(movieRating);
 
-  // Movie Object
-  const movie = {
-    Title: movieTitle,
-    Poster: moviePoster,
-    Actors: movieActors,
-    Released: movieReleased,
-    Rating: movieRating
-  }
-  console.log("Objects Working", movie);
+    // Movie Object
+    const movie = {
+      Title: movieTitle,
+      Poster: moviePoster,
+      Actors: movieActors,
+      Released: movieReleased,
+      Rating: movieRating
+    }
 
-  // Geting the data from the localstorage
-  let watchListStored = JSON.parse(localStorage.getItem("movieList")) || [];
+    // Getting the data from the local storage
+    let watchListStored = JSON.parse(localStorage.getItem("movieList")) || [];
 
-  //pushing the new movie into the watchlist arr
-  watchListStored.push(movie)
+    // Pushing the new movie into the watchlist array
+    watchListStored.push(movie)
 
-  // Once gettin the data it will store the updated data to local storage 
-  localStorage.setItem("movieList", JSON.stringify(watchListStored));
-  $("#alert-success").fadeIn();
+    // Once getting the data it will store the updated data to local storage 
+    localStorage.setItem("movieList", JSON.stringify(watchListStored));
+    $("#alert-success").fadeIn();
 
-  setTimeout(function () {
-    $("#alert-success").fadeOut();
-  }, 3000);
+    setTimeout(function () {
+      $("#alert-success").fadeOut();
+    }, 3000);
+  });
 });
-
 
 //This is the WatchList button on the navbar for users to see whats added
 //This will be focusing on WatchList for users
-$("#watchlist-btn").on("click", function (event) {
+$("#watchlist-link").on("click", function (event) {
   event.preventDefault();
+
+  console.log([localStorage.getItem("movieList")]);
+  showWatchlist([localStorage.getItem("movieList")]);
 
   //Head to the watchlist
   window.location.href = "watchlist.html";
 });
-
-
-
-
-
-// $(document).ready(function () {
-//   const storedMovies = localStorage.getItem("searchMovieName");
-//   // Parse it and be stored in a array as a JSON
-//   if (storedMovies !== null) {
-//     const getMovies = JSON.parse(storedMovies) || [];
-
-//     //show the movies in the watchlist page 
-//     showWatchlist([getMovies]);
-//   }
-// });
