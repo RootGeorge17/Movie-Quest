@@ -115,6 +115,7 @@ iframe {
 .movie-title {
   font-weight: bold;
 }
+
 /* WatchList for Searched Movies */
 
 .watch-list {
@@ -125,9 +126,10 @@ iframe {
   padding: 5px 10px;
   border-radius: 20px;
   cursor: pointer;
-  color: white;
+  color: #14213d;
   align-items: center;
 }
+
 /* 
 watchlist button */
 #watchlist-link {
@@ -135,8 +137,9 @@ watchlist button */
   text-decoration: none;
   color: inherit;
 }
+
 .watch-list:hover {
-  color: #14213d;
+  color: white;
 }
 
 .wrapper {
