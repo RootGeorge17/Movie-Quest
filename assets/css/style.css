@@ -1,16 +1,25 @@
+:root {
+  --background-color: #0d1b2a;
+  --font-family: 'Press Start 2P', sans-serif;
+}
+
+h4,
+h5 {
+  font-size: 10px;
+}
+
 a {
   text-decoration: none;
   transition: color 0.1s;
 }
 
 body {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
   background-color: #0d1b2a;
   color: white;
 }
 
+/* Search bar */
 form {
   width: 300px;
   height: 44px;
@@ -46,6 +55,9 @@ input {
   height: max-content;
 }
 
+/* Search bar Ends */
+
+/* movie card */
 .movie-data {
   padding: 15px;
   text-align: center;
@@ -54,21 +66,9 @@ input {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
 }
 
-.card {
+.cards {
   background-color: #14213d;
   color: white;
-}
-
-.movie-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 3rem;
-  transition: box-shadow 0.3s;
-}
-
-.alert-container {
-  z-index: 11;
 }
 
 img {
@@ -76,36 +76,36 @@ img {
 }
 
 .poster {
-  max-width: 30rem;
-  min-width: 10rem;
+  font-size: 5px;
+  max-width: 15rem;
+  min-width: 8rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
 }
 
 .current-movie {
-  max-width: 70rem;
-  padding: 2rem;
-  min-width: 10rem;
+  max-width: 30rem;
+  padding: 1rem;
   display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
 /* Movie Trailer */
-.movieContainer {
-  max-width: 70rem;
-  min-width: 10rem;
-  padding: 3rem;
-}
 
 /* To hide Movie Trailer and only be shown when its searched */
 .movie-card {
   display: none;
+
+  max-width: 40rem;
+  padding: 1rem;
+  min-width: 10rem;
+  max-height: 30rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
 }
 
 iframe {
   width: 100%;
+  height: 405px;
 }
 
 .search-section {
@@ -114,38 +114,32 @@ iframe {
 
 .movie-title {
   font-weight: bold;
-  font-size: 24px;
 }
+
 /* WatchList for Searched Movies */
 
 .watch-list {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  margin-top: 20px;
+  top: 5px;
+  left: 8px;
   transition: background-color 0.3s ease;
-  border-radius: 2px;
-  padding: 5px 5px;
-  margin: 3px;
+  padding: 5px 10px;
+  border-radius: 20px;
   cursor: pointer;
-  border-radius: 8px;
-  color: white;
+  color: #14213d;
+  align-items: center;
 }
+
 /* 
 watchlist button */
 #watchlist-link {
-  padding: 10px 20px;
-  display: inline-block;
+  transition: color 0.3s;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: inherit;
 }
+
 .watch-list:hover {
-  background-color: #14213d;
+  color: white;
 }
 
 .wrapper {
@@ -158,16 +152,16 @@ watchlist button */
   display: flex;
   overflow-x: auto;
   padding: 20px;
-  /* scrollbar-width: #14213d #e50914; */
-  gap: 20px;
+  gap: 0px;
 }
 
 .card-title {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
 }
 
-.cardS {
+.card {
   background-color: #14213d;
   border: none;
   width: 200px;
@@ -195,4 +189,15 @@ watchlist button */
   transition: background-color 0.3s ease;
   border-radius: 4px;
   padding: 10px 20px;
+}
+
+/* watchlist button  */
+.addMovie {
+  transition: background-color 0.3s;
+}
+
+/* Alert Container  */
+
+.alert-container {
+  z-index: 11;
 }
