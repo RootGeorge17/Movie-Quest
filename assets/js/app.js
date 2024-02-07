@@ -5,7 +5,8 @@ $("#search-button").on("click", function (event) {
   const apiKey = "AIzaSyCPh_nvXp0kulhY-W1zMJ1jpQBQ2sIsoew";
 
   //Getting the movie from the search bar adding it in the API
-  searchMovieName = $("#search-input").val().trim() + " trailer";
+  searchMovieName = $("#search-input").val().trim();
+  console.log(searchMovieName);
 
   //if a user search is empty an alert will be displayed
   if (searchMovieName === "") {
@@ -16,7 +17,8 @@ $("#search-button").on("click", function (event) {
     return;
   }
 
-  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName)}&type=video&videoType=movie&key=${apiKey}`;
+  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName + " trailer")}&type=video&videoCategoryId=1&key=${apiKey}`;
+  console.log(queryUrl);
 
   //Fetching the API Call 
   fetch(queryUrl)
