@@ -1,10 +1,10 @@
-var watchListStored = '';
+var watchListStored= [];
 
 $("#search-button").on("click", function (event) {
   event.preventDefault();
 
   //Api Key 
-  const apiKey = "AIzaSyCPh_nvXp0kulhY-W1zMJ1jpQBQ2sIsoew";
+  const apiKey = "AIzaSyB7_wPfd2E3WCflXd_mQD5GX_7_4iZhFZg";
 
   //Getting the movie from the search bar adding it in the API
   searchMovieName = $("#search-input").val().trim();
@@ -63,36 +63,36 @@ function showWatchlist(getMovies) {
   $(".watchlist-container").empty();
 
   // to have a maxium of 5 cards show in the watchlist
-  const maxMovieShow = 5;
-  const maxMovies = getMovies.slice(0, maxMovieShow)
+  // const maxMovieShow = 5;
+  // const maxMovies = getMovies.slice(0, maxMovieShow)
 
   // Iterate over getMovies
-  maxMovies.forEach(function (movie) {
+  // maxMovies.forEach(function (movie) {
 
-    // add the image for the video 
-    const posterImage = $("<img>");
-    posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
-    $(".watchlist-container").append(posterImage);
+  //   // add the image for the video 
+  //   const posterImage = $("<img>");
+  //   posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
+  //   $(".watchlist-container").append(posterImage);
 
-    //creating the movie card 
-    const movieCard = `
-          <div>
-            <h1 class="card-title">${movie.Title}</h1>
-            <h3 class="card-title">${movie.Actors}</h3>
-            <h3 class="card-title">${movie.Released}</h3>
-            <h3 class="card-title">${movie.imdbRating}</h3>
-          </div>`;
+  //   //creating the movie card 
+  //   const movieCard = `
+  //         <div>
+  //           <h1 class="card-title">${movie.Title}</h1>
+  //           <h3 class="card-title">${movie.Actors}</h3>
+  //           <h3 class="card-title">${movie.Released}</h3>
+  //           <h3 class="card-title">${movie.imdbRating}</h3>
+  //         </div>`;
 
-    //adding it in the watchlist container 
-    $(".watchlist-container").append(movieCard);
+  //   //adding it in the watchlist container 
+  //   $(".watchlist-container").append(movieCard);
 
-  });
+  // });
 }
 
 //clear btn 
 $("#Clear").on("click", function (event) {
   event.preventDefault();
-
+console.log('test')
   //remove storage
   localStorage.removeItem("searchMovieName");
 
@@ -148,7 +148,45 @@ $("#watchlist-link").on("click", function (event) {
 
   console.log([localStorage.getItem("movieList")]);
   showWatchlist([localStorage.getItem("movieList")]);
+  
 
   //Head to the watchlist
   window.location.href = "watchlist.html";
 });
+
+
+
+
+let savedMovies = JSON.parse(localStorage.getItem("movieList")) || [];
+  console.log(savedMovies);
+
+let textTest = $('.watchlist-container');
+for (let i = 0; i < savedMovies.length; i++) {
+  let value = savedMovies[i]
+  console.log(value)
+ console.log(value.Title)
+  const posterImage = $("<img>");
+
+  // posterImage.attr("src", data.Poster); // Setting the src attribute from movie.Poster
+  $(".watchlist-container").append(posterImage);
+
+  //creating the movie card 
+  const movieCard = `
+        <div>
+          <h1 class="card-title">${value.Title}</h1>
+          <h3 class="card-title">${value.Actors}</h3>
+          <h3 class="card-title">${value.Released}</h3>
+          <h3 class="card-title">${value.Rating}</h3>
+        </div>`;
+// console.log(movieCard)
+//   //adding it in the watchlist container 
+  $(".watchlist-container").append(movieCard);
+//   console.log(value)
+// textTest.text(value);
+  // console.log(watchListStored)
+  // console.log(savedMovies)
+  
+}
+ 
+
+  
