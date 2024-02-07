@@ -26,7 +26,7 @@ But that is not all! We added a personal touch by allowing users to save their f
 
 #### The following images show the application's appearance and functionality:
 
-![Movie-Quest screenshot - search page](./assets/images/Landingpagemain.PNG)
+![Movie-Quest screenshot - search page](./assets/images/newnewlandingfinal.PNG)
 
 ![Movie-Quest screenshot - results page](./assets/images/searchresults2.PNG)
 
