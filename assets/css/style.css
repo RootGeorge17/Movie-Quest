@@ -198,6 +198,24 @@ watchlist button */
 
 /* Alert Container  */
 
+/* Error section  */
 .alert-container {
   z-index: 11;
+}
+
+/* Successful Movie */
+.alert-success {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  z-index: 1000;
+  margin: 20px auto;
+  width: 90%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.alert-success.show {
+  opacity: 1;
 }
