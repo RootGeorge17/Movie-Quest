@@ -21,7 +21,7 @@ $(document).ready(function () {
     <div class="movieDetails"></div>
     <h2 class="card-title currentMovie"></h2>
     <div class="movie-data poster">
-      <img class="movie-poster" alt="movie-poster">
+      <img class="movie-poster">
       <h4 class="mb-1 iconTitle"></h4>
       <h4 class="movie-cast"></h4>
       <h4 class="release-date"></h4>
