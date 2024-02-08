@@ -82,6 +82,7 @@ img {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  margin-left: 113px;
 }
 
 .current-movie {
@@ -95,17 +96,18 @@ img {
 /* To hide Movie Trailer and only be shown when its searched */
 .movie-card {
   display: none;
-
+  margin-left: 55px;
   max-width: 40rem;
   padding: 1rem;
   min-width: 10rem;
-  max-height: 30rem;
+  height: 30rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.46);
+  margin-top: 20px;
 }
 
 iframe {
   width: 100%;
-  height: 405px;
+  height: 450px;
 }
 
 .search-section {
@@ -114,6 +116,11 @@ iframe {
 
 .movie-title {
   font-weight: bold;
+}
+
+.movie-title:hover {
+  color: #14213d;
+  color: white;
 }
 
 /* WatchList for Searched Movies */
@@ -183,14 +190,13 @@ watchlist button */
 }
 
 /* buttons for the watchlist */
-#clear {
+/* #Clear {
   border: none;
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s ease;
   border-radius: 4px;
-  padding: 10px 20px;
-}
+} */
 
 /* watchlist button  */
 .addMovie {
@@ -219,4 +225,33 @@ watchlist button */
 
 .alert-success.show {
   opacity: 1;
+}
+
+@media screen and (min-width: 375px) and (max-width: 576px) {
+  #watchlist-link {
+    margin: -23px;
+  }
+  .poster {
+    position: relative;
+    right: 45px;
+  }
+
+  .movie-card {
+    margin-left: 10px;
+  }
+
+  .card {
+    margin: 2px;
+  }
+
+  .watchlist-container {
+  }
+
+  #Clear {
+    width: 20%;
+    margin-left: 25px;
+  }
+  .backBtn {
+    width: 20%;
+  }
 }
