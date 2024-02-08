@@ -148,12 +148,13 @@ watchlist button */
   background-color: #14213d;
 }
 
-.watchlist-container {
+/* .watchlist-container {
   display: flex;
+  flex-direction: row;
   overflow-x: auto;
   padding: 20px;
   gap: 0px;
-}
+} */
 
 .card-title {
   margin-bottom: 10px;
