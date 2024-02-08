@@ -61,6 +61,8 @@ $("#Clear").on("click", function (event) {
   //remove storage
   localStorage.removeItem("movieList");
 
+  $(".no-movies").text("No movies currently in your watchlist");
+
   // clear the container
   $(".watchlist-container").empty();
 });
@@ -128,6 +130,10 @@ $("#watchlist-link").on("click", function (event) {
 });
 
 let savedMovies = JSON.parse(localStorage.getItem("movieList")) || [];
+
+if (savedMovies.length === 0) {
+  $(".no-movies").text("No movies currently in your watchlist");
+}
 
 let textTest = $(".watchlist-container");
 for (let i = 0; i < savedMovies.length; i++) {
