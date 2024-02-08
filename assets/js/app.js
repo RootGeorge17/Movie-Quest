@@ -1,9 +1,9 @@
-var watchListStored= [];
+var watchListStored = [];
 
 $("#search-button").on("click", function (event) {
   event.preventDefault();
 
-  //Api Key 
+  //Api Key
   const apiKey = "AIzaSyB7_wPfd2E3WCflXd_mQD5GX_7_4iZhFZg";
 
   //Getting the movie from the search bar adding it in the API
@@ -19,36 +19,36 @@ $("#search-button").on("click", function (event) {
     return;
   }
 
-  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchMovieName + " trailer")}&type=video&videoCategoryId=1&key=${apiKey}`;
+  var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
+    searchMovieName + " trailer"
+  )}&type=video&videoCategoryId=1&key=${apiKey}`;
   console.log(queryUrl);
 
-  //Fetching the API Call 
+  //Fetching the API Call
   fetch(queryUrl)
     .then(function (response) {
       return response.json(); //This process is waiting for the response and parsing it into JSON format
     })
     .then(function (results) {
-      const moviesData = results.items.map(item => ({
+      const moviesData = results.items.map((item) => ({
         title: item.snippet.title,
       }));
 
       showWatchlist(moviesData);
       addMovieTrailer(results);
-
     })
     .catch(function (error) {
-      //handling if an error occurs when fetching 
+      //handling if an error occurs when fetching
       console.error(`Error Occurred when Fetching the Youtube API ${error}`);
     });
 });
 
 // function to display the video
 function addMovieTrailer(data) {
-
   //finding
   const video = data.items[0].id.videoId;
   console.log(video);
-  //displaying the video in the webpage by using iframes and will be muted once its play 
+  //displaying the video in the webpage by using iframes and will be muted once its play
   const youtubeSrc = `https://www.youtube.com/embed/${video}`;
   const iframeEl = `<iframe id="player" type="text/html" src="${youtubeSrc}" frameborder="0" height="500"></iframe>`;
 
@@ -69,12 +69,12 @@ function showWatchlist(getMovies) {
   // Iterate over getMovies
   // maxMovies.forEach(function (movie) {
 
-  //   // add the image for the video 
+  //   // add the image for the video
   //   const posterImage = $("<img>");
   //   posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
   //   $(".watchlist-container").append(posterImage);
 
-  //   //creating the movie card 
+  //   //creating the movie card
   //   const movieCard = `
   //         <div>
   //           <h1 class="card-title">${movie.Title}</h1>
@@ -83,28 +83,28 @@ function showWatchlist(getMovies) {
   //           <h3 class="card-title">${movie.imdbRating}</h3>
   //         </div>`;
 
-  //   //adding it in the watchlist container 
+  //   //adding it in the watchlist container
   //   $(".watchlist-container").append(movieCard);
 
   // });
 }
 
-//clear btn 
+//clear btn
 $("#Clear").on("click", function (event) {
   event.preventDefault();
-console.log('test')
+  console.log("test");
   //remove storage
   localStorage.removeItem("searchMovieName");
 
-  // clear the container 
-  $(".watchlist-container").empty()
+  // clear the container
+  $(".watchlist-container").empty();
 });
 
 $(document).ready(function () {
   $(".current-movie").on("click", ".addMovie", function (event) {
     event.preventDefault();
 
-    // Get it from the data-attribute 
+    // Get it from the data-attribute
     const movieTitle = $(this).data("movie-title");
     console.log(movieTitle);
     const moviePoster = $(this).data("movie-poster");
@@ -122,16 +122,16 @@ $(document).ready(function () {
       Poster: moviePoster,
       Actors: movieActors,
       Released: movieReleased,
-      Rating: movieRating
-    }
+      Rating: movieRating,
+    };
 
     // Getting the data from the local storage
     let watchListStored = JSON.parse(localStorage.getItem("movieList")) || [];
 
     // Pushing the new movie into the watchlist array
-    watchListStored.push(movie)
+    watchListStored.push(movie);
 
-    // Once getting the data it will store the updated data to local storage 
+    // Once getting the data it will store the updated data to local storage
     localStorage.setItem("movieList", JSON.stringify(watchListStored));
     $("#alert-success").fadeIn();
 
@@ -148,45 +148,44 @@ $("#watchlist-link").on("click", function (event) {
 
   console.log([localStorage.getItem("movieList")]);
   showWatchlist([localStorage.getItem("movieList")]);
-  
 
   //Head to the watchlist
   window.location.href = "watchlist.html";
 });
 
-
-
-
 let savedMovies = JSON.parse(localStorage.getItem("movieList")) || [];
-  console.log(savedMovies);
+console.log(savedMovies);
 
-let textTest = $('.watchlist-container');
+let textTest = $(".watchlist-container");
 for (let i = 0; i < savedMovies.length; i++) {
-  let value = savedMovies[i]
-  console.log(value)
- console.log(value.Title)
-  const posterImage = $("<img>");
+  let value = savedMovies[i];
 
+  let col = $("<div>");
+  col.addClass("col-lg mb-3 mb-sm-0");
+  let card = $("<div>");
+  card.addClass("card");
+  let cardBody = $("<div>");
+  cardBody.addClass("card-body border");
+  console.log(value);
+
+  // const posterImage = $("<img>");
   // posterImage.attr("src", data.Poster); // Setting the src attribute from movie.Poster
-  $(".watchlist-container").append(posterImage);
+  // $(".watchlist-container").append(posterImage);
 
-  //creating the movie card 
+  //creating the movie card
   const movieCard = `
-        <div>
-          <h1 class="card-title">${value.Title}</h1>
+        <div class="col mb-3 mb-sm-2">
+        <div class="card" >
+        <div class="card-body text-light">
+        <img class="mb-3"src="${value.Poster}">
+        <h1 class="card-title">${value.Title}</h1>
           <h3 class="card-title">${value.Actors}</h3>
           <h3 class="card-title">${value.Released}</h3>
           <h3 class="card-title">${value.Rating}</h3>
+        </div>
+        </div>
         </div>`;
-// console.log(movieCard)
-//   //adding it in the watchlist container 
+  
   $(".watchlist-container").append(movieCard);
-//   console.log(value)
-// textTest.text(value);
-  // console.log(watchListStored)
-  // console.log(savedMovies)
-  
-}
- 
 
-  
+}
