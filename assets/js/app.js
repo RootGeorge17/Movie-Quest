@@ -1,14 +1,10 @@
-var watchListStored = [];
-
 $("#search-button").on("click", function (event) {
   event.preventDefault();
 
-  //Api Key
-  const apiKey = "AIzaSyB7_wPfd2E3WCflXd_mQD5GX_7_4iZhFZg";
+  const apiKey = "AIzaSyB7_wPfd2E3WCflXd_mQD5GX_7_4iZhFZg"; //Api Key
 
   //Getting the movie from the search bar adding it in the API
   searchMovieName = $("#search-input").val().trim();
-  console.log(searchMovieName);
 
   //if a user search is empty an alert will be displayed
   if (searchMovieName === "") {
@@ -22,7 +18,6 @@ $("#search-button").on("click", function (event) {
   var queryUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     searchMovieName + " trailer"
   )}&type=video&videoCategoryId=1&key=${apiKey}`;
-  console.log(queryUrl);
 
   //Fetching the API Call
   fetch(queryUrl)
@@ -34,12 +29,14 @@ $("#search-button").on("click", function (event) {
         title: item.snippet.title,
       }));
 
-      showWatchlist(moviesData);
       addMovieTrailer(results);
     })
     .catch(function (error) {
       //handling if an error occurs when fetching
-      console.error(`Error Occurred when Fetching the Youtube API ${error}`);
+      $("#alert-container").append(`
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error Occurred when Fetching the Youtube API ${error}</strong> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>`);
     });
 });
 
@@ -47,7 +44,6 @@ $("#search-button").on("click", function (event) {
 function addMovieTrailer(data) {
   //finding
   const video = data.items[0].id.videoId;
-  console.log(video);
   //displaying the video in the webpage by using iframes and will be muted once its play
   const youtubeSrc = `https://www.youtube.com/embed/${video}`;
   const iframeEl = `<iframe id="player" type="text/html" src="${youtubeSrc}" frameborder="0" height="500"></iframe>`;
@@ -59,42 +55,11 @@ function addMovieTrailer(data) {
   $(".movie-card").show();
 }
 
-function showWatchlist(getMovies) {
-  $(".watchlist-container").empty();
-
-  // to have a maxium of 5 cards show in the watchlist
-  // const maxMovieShow = 5;
-  // const maxMovies = getMovies.slice(0, maxMovieShow)
-
-  // Iterate over getMovies
-  // maxMovies.forEach(function (movie) {
-
-  //   // add the image for the video
-  //   const posterImage = $("<img>");
-  //   posterImage.attr("src", movie.Poster); // Setting the src attribute from movie.Poster
-  //   $(".watchlist-container").append(posterImage);
-
-  //   //creating the movie card
-  //   const movieCard = `
-  //         <div>
-  //           <h1 class="card-title">${movie.Title}</h1>
-  //           <h3 class="card-title">${movie.Actors}</h3>
-  //           <h3 class="card-title">${movie.Released}</h3>
-  //           <h3 class="card-title">${movie.imdbRating}</h3>
-  //         </div>`;
-
-  //   //adding it in the watchlist container
-  //   $(".watchlist-container").append(movieCard);
-
-  // });
-}
-
 //clear btn
 $("#Clear").on("click", function (event) {
   event.preventDefault();
-  console.log("test");
   //remove storage
-  localStorage.removeItem("searchMovieName");
+  localStorage.removeItem("movieList");
 
   // clear the container
   $(".watchlist-container").empty();
@@ -104,19 +69,14 @@ $(document).ready(function () {
   $(".current-movie").on("click", ".addMovie", function (event) {
     event.preventDefault();
 
-    // Get it from the data-attribute
+    // Get movie details from data attributes
     const movieTitle = $(this).data("movie-title");
-    console.log(movieTitle);
     const moviePoster = $(this).data("movie-poster");
-    console.log(moviePoster);
     const movieActors = $(this).data("movie-actors");
-    console.log(movieActors);
     const movieReleased = $(this).data("movie-released");
-    console.log(movieReleased);
     const movieRating = $(this).data("movie-imdb-rating");
-    console.log(movieRating);
 
-    // Movie Object
+    // Create a movie object
     const movie = {
       Title: movieTitle,
       Poster: moviePoster,
@@ -125,19 +85,36 @@ $(document).ready(function () {
       Rating: movieRating,
     };
 
-    // Getting the data from the local storage
+    // Get the existing watchlist from local storage
     let watchListStored = JSON.parse(localStorage.getItem("movieList")) || [];
 
-    // Pushing the new movie into the watchlist array
-    watchListStored.push(movie);
+    // Check if the movie already exists in the watchlist
+    const existingIndex = watchListStored.findIndex(
+      (savedMovie) => savedMovie.Title === movie.Title
+    );
 
-    // Once getting the data it will store the updated data to local storage
-    localStorage.setItem("movieList", JSON.stringify(watchListStored));
-    $("#alert-success").fadeIn();
+    if (existingIndex === -1) {
+      // Movie does not exist in the watchlist, so add it
+      watchListStored.push(movie);
 
-    setTimeout(function () {
-      $("#alert-success").fadeOut();
-    }, 3000);
+      // Store the updated watchlist in local storage
+      localStorage.setItem("movieList", JSON.stringify(watchListStored));
+
+      // Show success alert
+      $("#alert-success").fadeIn();
+      setTimeout(function () {
+        $("#alert-success").fadeOut();
+      }, 3000);
+    } else {
+      // Show error alert because movie already exists in the watchlist
+      if ($("#alert-container").find(".alert-warning").length === 0) {
+        $("#alert-container").append(`
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>This movie is already in your watch list!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>`);
+      }
+    }
   });
 });
 
@@ -146,15 +123,11 @@ $(document).ready(function () {
 $("#watchlist-link").on("click", function (event) {
   event.preventDefault();
 
-  console.log([localStorage.getItem("movieList")]);
-  showWatchlist([localStorage.getItem("movieList")]);
-
   //Head to the watchlist
   window.location.href = "watchlist.html";
 });
 
 let savedMovies = JSON.parse(localStorage.getItem("movieList")) || [];
-console.log(savedMovies);
 
 let textTest = $(".watchlist-container");
 for (let i = 0; i < savedMovies.length; i++) {
@@ -166,11 +139,6 @@ for (let i = 0; i < savedMovies.length; i++) {
   card.addClass("card");
   let cardBody = $("<div>");
   cardBody.addClass("card-body border");
-  console.log(value);
-
-  // const posterImage = $("<img>");
-  // posterImage.attr("src", data.Poster); // Setting the src attribute from movie.Poster
-  // $(".watchlist-container").append(posterImage);
 
   //creating the movie card
   const movieCard = `
@@ -185,7 +153,6 @@ for (let i = 0; i < savedMovies.length; i++) {
         </div>
         </div>
         </div>`;
-  
-  $(".watchlist-container").append(movieCard);
 
+  $(".watchlist-container").append(movieCard);
 }
